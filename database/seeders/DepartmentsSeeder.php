@@ -39,7 +39,7 @@ class DepartmentsSeeder extends Seeder
 
         // Menyimpan data ke dalam tabel departments
         foreach ($departments as $department) {
-            Departments::updateOrCreate(
+            Department::updateOrCreate(
                 ['name' => $department['name']], // Mencari berdasarkan nama
                 ['description' => $department['description']] // Menyimpan deskripsi
             );

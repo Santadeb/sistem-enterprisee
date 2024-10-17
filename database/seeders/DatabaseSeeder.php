@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\EmployeesSeeder;
 use Database\Seeders\DepartmentsSeeder;
 use Spatie\Permission\Models\Permission;
 
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
         RoleSeeder::class,
         UserSeeder::class,
         DepartmentsSeeder::class,
+        EmployeesSeeder::class,
         ]);
     }
 }
