@@ -51,7 +51,7 @@ route::resource('payroll', PayrollController::class);
 Route::resource('leave', LeaveController::class);
 
 
-//Route::resource('attendance', AttendanceController::class);
+Route::resource('attendance', AttendanceController::class);
 
 //email
 Route::get('email' , function(){
