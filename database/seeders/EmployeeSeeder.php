@@ -7,7 +7,7 @@ use App\Models\Employee;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class EmployeesSeeder extends Seeder
+class EmployeeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,25 +17,14 @@ class EmployeesSeeder extends Seeder
         $employees = [
             [
                 'user_id' => 1,
-                'departments_id' => 1,
+                'department_id' => 1,
                 'address' => 'jl.santai',
-                'place_of_birth' => 'pekanbaru',
+                'place_of_birth' => 'oekanbaru',
                 'dob' =>'2004-12-02',
                 'religion' => 'Islam',
                 'sex' => 'Male',
                 'phone' => '1231412',
                 'salary' => '010910239',
-            ],
-            [
-                'user_id' => 3,
-                'departments_id' => 3,
-                'address' => 'jl.santai',
-                'place_of_birth' => 'pelalawan',
-                'dob' =>'2004-12-02',
-                'religion' => 'Islam',
-                'sex' => 'Male',
-                'phone' => '1231567',
-                'salary' => '0109',
             ],
             
         ];

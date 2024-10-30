@@ -6,11 +6,10 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
-
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
-class EmployeesController extends Controller
+class EmployeeController extends Controller
 {
     public function index()
     {
@@ -33,7 +32,7 @@ class EmployeesController extends Controller
     // Validasi input
     $request->validate([
         'user_id' => 'required|exists:users,id',
-        'departments_id' => 'required|exists:departments,id',
+        'department_id' => 'required|exists:departments,id',
         'address' => 'required|string|max:255',
         'place_of_birth' => 'nullable|string|max:255',
         'dob' => 'nullable|date',
@@ -46,7 +45,7 @@ class EmployeesController extends Controller
     // Insert employee baru ke dalam database
     DB::table('employees')->insert([
         'user_id' => $request->user_id,
-        'departments_id' => $request->department_id,
+        'department_id' => $request->department_id,
         'address' => $request->address,
         'place_of_birth' => $request->place_of_birth,
         'dob' => $request->dob,

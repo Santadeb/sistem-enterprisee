@@ -1,30 +1,23 @@
+<!-- resources/views/departments/create.blade.php -->
 @extends('admin.app')
 
 @section('content')
 <div class="container">
-    <h3>Create New Department</h3>
-
+    <h1>Tambah Department</h1>
     <form action="{{ route('departments.store') }}" method="POST">
         @csrf
-
-        <div class="mb-3">
-            <label for="name" class="form-label">Department Name</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
-            @error('name')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+        <div class="form-group">
+            <label for="name">Department Name</label>
+            <input type="text" name="name" class="form-control" required>
         </div>
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
-            @error('description')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+        <div class="form-group">
+            <label for="description">Department Description</label>
+            <textarea name="description" class="form-control"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Department</button>
-        <a href="{{ route('departments.index') }}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="{{ route('departments.index') }}" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 @endsection

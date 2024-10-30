@@ -8,7 +8,7 @@
 
             <!-- Add New Employee Button -->
             <a href="{{ route('employees.create') }}" class="btn btn-primary mb-3 float-right">
-                Add Employee
+                Tambah Employee
             </a>
 
             <!-- Search Field -->
@@ -33,7 +33,7 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $employee->user->name ?? 'N/A' }}</td>
-                            <td>{{ $employee->Departments->name ?? 'N/A' }}</td>
+                            <td>{{ $employee->department->name ?? 'N/A' }}</td>
                             <td>{{ $employee->phone }}</td>
                             <td>{{ $employee->salary }}</td>
                             <td>
