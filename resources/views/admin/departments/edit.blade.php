@@ -1,24 +1,30 @@
-<!-- resources/views/departments/edit.blade.php -->
 @extends('admin.app')
 
 @section('content')
 <div class="container">
-    <h1>Edit Department</h1>
-    <form action="{{ route('departments.update', $departments->id) }}" method="POST">
+    <h3>Edit Customer</h3>
+
+    <form action="{{ route('customers.update', $customer->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="name">Department Name</label>
-            <input type="text" name="name" class="form-control" value="{{ $departments->name }}" required>
+            <label for="name">Nama</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $customer->name) }}" required>
         </div>
-
         <div class="form-group">
-            <label for="description">Department Description</label>
-            <textarea name="description" class="form-control">{{ $departments->description }}</textarea>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $customer->email) }}" required>
         </div>
-
-        <button type="submit" class="btn btn-success">Ubah</button>
-        <a href="{{ route('departments.index') }}" class="btn btn-secondary">Batal</a>
+        <div class="form-group">
+            <label for="phone">Telepon</label>
+            <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone', $customer->phone) }}">
+        </div>
+        <div class="form-group">
+            <label for="address">Alamat</label>
+            <textarea name="address" id="address" class="form-control" rows="4">{{ old('address', $customer->address) }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{{ route('customers.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 @endsection

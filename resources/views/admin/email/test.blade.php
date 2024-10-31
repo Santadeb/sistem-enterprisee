@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Test Kirim  Email</h1>
-    <p>Ini adalah contoh isi dari sebuah emial</p>
+    <h1>{{$title}}</h1>
+    <p>{{$content}}</p>
 </body>
 </html>

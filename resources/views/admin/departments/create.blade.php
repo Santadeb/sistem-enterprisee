@@ -1,23 +1,28 @@
-<!-- resources/views/departments/create.blade.php -->
 @extends('admin.app')
 
 @section('content')
 <div class="container">
-    <h1>Tambah Department</h1>
-    <form action="{{ route('departments.store') }}" method="POST">
+    <h3>Tambah Customer</h3>
+
+    <form action="{{ route('customers.store') }}" method="POST">
         @csrf
-        <div class="form-group">
-            <label for="name">Department Name</label>
-            <input type="text" name="name" class="form-control" required>
+        <div class="form-group mb-3"> <!-- Menambahkan mb-3 untuk margin bawah -->
+            <label for="name">Nama</label>
+            <input type="text" name="name" id="name" class="form-control" required>
         </div>
-
-        <div class="form-group">
-            <label for="description">Department Description</label>
-            <textarea name="description" class="form-control"></textarea>
+        <div class="form-group mb-3"> <!-- Menambahkan mb-3 untuk margin bawah -->
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required>
         </div>
-
+        <div class="form-group mb-3"> <!-- Menambahkan mb-3 untuk margin bawah -->
+            <label for="phone">Telepon</label>
+            <input type="text" name="phone" id="phone" class="form-control">
+        </div>
+        <div class="form-group mb-3"> <!-- Menambahkan mb-3 untuk margin bawah -->
+            <label for="address">Alamat</label>
+            <textarea name="address" id="address" class="form-control" rows="4"></textarea>
+        </div>
         <button type="submit" class="btn btn-success">Simpan</button>
-        <a href="{{ route('departments.index') }}" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 @endsection

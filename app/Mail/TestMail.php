@@ -13,12 +13,18 @@ class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject;
+    public $judul;  // Properti judul dideklarasikan
+    public $body;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($subject, $title, $content)
     {
-        //
+        $this->subject = $subject;
+        $this->judul = $title;
+        $this->body = $content;
     }
 
     /**
@@ -27,7 +33,7 @@ class TestMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Test Mail',
+            subject: $this->subject
         );
     }
 
@@ -38,6 +44,10 @@ class TestMail extends Mailable
     {
         return new Content(
             view: 'admin.email.test',
+            with: [
+                'title'   => $this->judul,
+                'content' => $this->body,
+            ],
         );
     }
 

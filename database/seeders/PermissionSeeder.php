@@ -49,6 +49,15 @@ class PermissionSeeder extends Seeder
     Permission::updateORcreate(['name' => 'edit presence']);
     Permission::updateORcreate(['name' => 'delete presence']);
 
+    // Permissions untuk mengelola customers
+    Permission::updateOrCreate(['name' => 'show customer']);
+    Permission::updateOrCreate(['name' => 'add customer']);
+    Permission::updateOrCreate(['name' => 'edit customer']);
+    Permission::updateOrCreate(['name' => 'delete customer']);
+
+
+
+
 
     }
 }
