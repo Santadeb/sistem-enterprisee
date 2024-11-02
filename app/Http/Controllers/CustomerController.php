@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
@@ -31,27 +30,31 @@ class CustomerController extends Controller
         return redirect()->route('customers.index')->with('success', 'Customer berhasil ditambahkan.');
     }
 
-    public function edit(Customer $customer)
+    public function edit($customer_id)
     {
+        $customer = Customer::where('customer_id', $customer_id)->firstOrFail();
         return view('admin.customer.edit', compact('customer'));
     }
 
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $customer_id)
     {
+        $customer = Customer::where('customer_id', $customer_id)->firstOrFail();
+
         $request->validate([
             'name' => 'required|string|max:100',
-            'email' => 'required|email|unique:customers,email,' . $customer->id,
+            'email' => 'required|email|unique:customers,email,' . $customer->customer_id . ',customer_id',
             'phone' => 'nullable|string|max:15',
             'address' => 'nullable|string',
         ]);
 
         $customer->update($request->all());
-        return redirect()->route('customer.index')->with('success', 'Customer berhasil diperbarui.');
+        return redirect()->route('customers.index')->with('success', 'Customer berhasil diperbarui.');
     }
 
-    public function destroy(Customer $customer)
+    public function destroy($customer_id)
     {
+        $customer = Customer::where('customer_id', $customer_id)->firstOrFail();
         $customer->delete();
-        return redirect()->route('customer.index')->with('success', 'Customer berhasil dihapus.');
+        return redirect()->route('customers.index')->with('success', 'Customer berhasil dihapus.');
     }
 }

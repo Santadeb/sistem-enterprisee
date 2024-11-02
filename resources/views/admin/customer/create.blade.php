@@ -2,37 +2,45 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="mb-4">Tambah Customer</h1>
+    <h3>Tambah Customer</h3>
 
-            <!-- Customer Create Form -->
-            <form action="{{ route('customers.store') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter customer name" required>
-                </div>
+    <form action="{{ route('customers.store') }}" method="POST">
+        @csrf
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter customer email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter customer phone number">
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <textarea name="address" class="form-control" id="address" placeholder="Enter customer address"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Save Customer</button>
-                <a href="{{ route('customers.index') }}" class="btn btn-secondary">Cancel</a>
-            </form>
+        <div class="form-group mb-3">
+            <label for="name">Nama</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required>
+            @error('name')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
-    </div>
+
+        <div class="form-group mb-3">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required>
+            @error('email')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="phone">Telepon</label>
+            <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone') }}">
+            @error('phone')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="address">Alamat</label>
+            <textarea name="address" id="address" class="form-control">{{ old('address') }}</textarea>
+            @error('address')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <button type="submit" class="btn btn-primary">Tambah Customer</button>
+        <a href="{{ route('customers.index') }}" class="btn btn-secondary">Kembali</a>
+    </form>
 </div>
 @endsection

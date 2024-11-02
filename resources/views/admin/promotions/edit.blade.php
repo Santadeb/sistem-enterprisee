@@ -4,19 +4,19 @@
 <div class="container">
     <h3>Edit Promosi</h3>
 
-    <form action="{{ route('promotions.update', $promotion->id) }}" method="POST">
+    <form action="{{ route('promotions.update', $promotion->promotion_id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
             <label for="name">Nama Promosi</label>
-            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $promotion->name) }}" required>
+            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $promotion->name) }}" required>
         </div>
         <div class="form-group">
             <label for="description">Deskripsi</label>
-            <textarea name="description" id="description" class="form-control" rows="4">{{ old('description', $promotion->description) }}</textarea>
+            <textarea class="form-control" id="description" name="description" rows="4">{{ old('description', $promotion->description) }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('promotions.index') }}" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-warning mt-3">Perbarui</button>
+        <a href="{{ route('promotions.index') }}" class="btn btn-secondary mt-3">Kembali</a>
     </form>
 </div>
 @endsection

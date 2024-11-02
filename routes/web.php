@@ -61,13 +61,17 @@ Route::resource('attendance', AttendanceController::class);
 Route::resource('customers', CustomerController::class);
 Route::resource('promotions', PromotionController::class);
 
-Route::prefix('send-promotions')->name('send-promotions.')->group(function () {
+// Route untuk mengirim email promosi
+Route::post('/send-promotion-email', [SendPromotionController::class, 'sendEmail'])->name('send.promotion.email');
+
+
+Route::prefix('send-promotions')->name('send_promotions.')->group(function () {
     Route::get('/', [SendPromotionController::class, 'index'])->name('index');       
     Route::get('/create', [SendPromotionController::class, 'create'])->name('create'); 
     Route::post('/', [SendPromotionController::class, 'store'])->name('store');        
     Route::get('/{sendPromotion}/edit', [SendPromotionController::class, 'edit'])->name('edit'); 
     Route::put('/{sendPromotion}', [SendPromotionController::class, 'update'])->name('update'); 
-    Route::delete('/{sendPromotion}', [SendPromotionController::class, 'destroy'])->name('destroy');
+    Route::delete('/{sendPromotion}', [SendPromotionController::class, 'destroy'])->name('destroy'); 
 });
 
 //email

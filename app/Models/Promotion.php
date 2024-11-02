@@ -9,13 +9,11 @@ class Promotion extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name', 
-        'description', 
-    ];
+    protected $table = 'promotions';
+    protected $primaryKey = 'promotion_id';
 
-    public function sendPromotions()
-    {
-        return $this->hasMany(SendPromotion::class);
-    }
+    protected $fillable = [
+        'name',
+        'description',
+    ];
 }

@@ -1,4 +1,3 @@
-
 @extends('admin.app')
 
 @section('content')
@@ -15,11 +14,11 @@
                 <th>Email</th>
                 <th>Telepon</th>
                 <th>Alamat</th>
-                <th>Actions</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($customers as $customer)
+            @forelse($customers as $customer)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $customer->name }}</td>
@@ -27,17 +26,21 @@
                     <td>{{ $customer->phone }}</td>
                     <td>{{ $customer->address }}</td>
                     <td>
-                        <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-warning">Edit</a>
-
-                        <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" style="display:inline-block;">
+                        <a href="{{ route('customers.edit', $customer->customer_id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('customers.destroy', $customer->customer_id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Anda Yakin Data Ini Di Hapus?')">Delete</button>
                         </form>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="6" class="text-center">Tidak ada data pelanggan</td>
+                </tr>
+            @endforelse
         </tbody>
+        
     </table>
 </div>
 @endsection

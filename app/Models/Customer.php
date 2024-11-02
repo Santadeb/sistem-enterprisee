@@ -10,7 +10,7 @@ class Customer extends Model
     use HasFactory;
 
     protected $table = 'customers';
-    protected $primaryKey = 'id_customer';
+    protected $primaryKey = 'customer_id'; // Sesuaikan dengan migration
 
     protected $fillable = [
         'name',
@@ -18,5 +18,6 @@ class Customer extends Model
         'phone',
         'address',
     ];
-}
 
+    
+}

@@ -6,15 +6,16 @@
 
     <form action="{{ route('promotions.store') }}" method="POST">
         @csrf
-        <div class="form-group mb-3"> <!-- Menambahkan mb-3 untuk margin bawah -->
+        <div class="form-group">
             <label for="name">Nama Promosi</label>
-            <input type="text" name="name" id="name" class="form-control" required>
+            <input type="text" class="form-control" id="name" name="name" required>
         </div>
-        <div class="form-group mb-3"> <!-- Menambahkan mb-3 untuk margin bawah -->
+        <div class="form-group">
             <label for="description">Deskripsi</label>
-            <textarea name="description" id="description" class="form-control" rows="4"></textarea>
+            <textarea class="form-control" id="description" name="description" rows="4"></textarea>
         </div>
-        <button type="submit" class="btn btn-success">Simpan</button>
+        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+        <a href="{{ route('promotions.index') }}" class="btn btn-secondary mt-3">Kembali</a>
     </form>
 </div>
 @endsection

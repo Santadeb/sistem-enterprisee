@@ -29,18 +29,22 @@ class PromotionController extends Controller
         return redirect()->route('promotions.index')->with('success', 'Promosi berhasil ditambahkan.');
     }
 
-    public function show(Promotion $promotion)
+    public function show($promotion_id)
     {
+        $promotion = Promotion::findOrFail($promotion_id);
         return view('admin.promotions.show', compact('promotion'));
     }
 
-    public function edit(Promotion $promotion)
+    public function edit($promotion_id)
     {
+        $promotion = Promotion::findOrFail($promotion_id);
         return view('admin.promotions.edit', compact('promotion'));
     }
 
-    public function update(Request $request, Promotion $promotion)
+    public function update(Request $request, $promotion_id)
     {
+        $promotion = Promotion::findOrFail($promotion_id);
+
         $request->validate([
             'name' => 'required|string|max:100',
             'description' => 'nullable|string',
@@ -50,8 +54,9 @@ class PromotionController extends Controller
         return redirect()->route('promotions.index')->with('success', 'Promosi berhasil diperbarui.');
     }
 
-    public function destroy(Promotion $promotion)
+    public function destroy($promotion_id)
     {
+        $promotion = Promotion::findOrFail($promotion_id);
         $promotion->delete();
         return redirect()->route('promotions.index')->with('success', 'Promosi berhasil dihapus.');
     }

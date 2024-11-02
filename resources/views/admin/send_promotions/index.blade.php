@@ -2,29 +2,32 @@
 
 @section('content')
 <div class="container">
-    <h3>Daftar Pengiriman Promosi</h3>
+    <h3>Daftar Promosi yang Dikirim</h3>
+
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-    <a href="{{ route('send-promotions.create') }}" class="btn btn-primary">Kirim Promosi Baru</a>
+
+    <a href="{{ route('send_promotions.create') }}" class="btn btn-primary mb-3">Kirim Promosi Baru</a>
+
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Customer</th>
-                <th>Promosi</th>
+                <th>Nama Customer</th>
+                <th>Nama Promosi</th>
+                <th>Tanggal Dikirim</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($sendPromotions as $sendPromotion)
+            @foreach ($sendPromotions as $sendPromotion)
                 <tr>
-                    <td>{{ $sendPromotion->id }}</td>
                     <td>{{ $sendPromotion->customer->name }}</td>
                     <td>{{ $sendPromotion->promotion->name }}</td>
+                    <td>{{ $sendPromotion->sent_at }}</td>
                     <td>
-                        <a href="{{ route('send-promotions.edit', $sendPromotion->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('send-promotions.destroy', $sendPromotion->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('send_promotions.edit', $sendPromotion->id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('send_promotions.destroy', $sendPromotion->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Hapus</button>

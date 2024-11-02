@@ -101,7 +101,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{route('send-promotions.index')}}" class="menu-link">
+                                <a href="{{route('send_promotions.index')}}" class="menu-link">
                                     <div data-i18n="Sub Menu 2">Send Promotion</div>
                                 </a>
                             </li>
